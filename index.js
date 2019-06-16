@@ -11,6 +11,16 @@ module.exports = app => {
     return context.github.issues.createComment(issueComment)
   })
 
+  app.on('issue_comment.created', context => {
+    if (context.payload.comment.body.match(/\/remind\s*me/)) {
+      context.log('This issue comment is a reminder request.')
+      const issueComment = context.issue({ body: 'I will remind you of this issue' })
+      return context.github.issues.createComment(issueComment);
+    } else {
+      context.log('Sadly, this issue comment is a not reminder request.')
+    }
+  });
+
   // For more information on building apps:
   // https://probot.github.io/docs/
 
