@@ -1,6 +1,13 @@
-sudo: false
 language: node_js
 node_js:
+  - "stable"
+  - "11"
+  - "10"
+  - "9"
   - "8.3"
 notifications:
   disabled: true
+install:
+  - npm install
+script:
+  - npm test
