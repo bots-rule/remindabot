@@ -1,2 +1,8 @@
+# Third Party Modules
 node_modules/
+
+# Env
 .env
+
+# Coverge
+coverage/
